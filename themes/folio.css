@@ -1,0 +1,215 @@
+/*
+ * Folio -- editorial and calm: Noto Serif titles over Noto Sans, warm paper
+ * neutrals, a light stone sidebar with an ink-green marker, hairline borders
+ * instead of shadows, a ruled table header and generous row spacing.
+ *
+ * Structure comes from shared/base.css; aurora.css documents every token.
+ */
+
+@import url("shared/base.css");
+
+@font-face { font-family: 'Noto Serif'; font-style: normal; font-weight: 600; font-display: swap; src: url("folio/fonts/NotoSerif-SemiBold.woff2") format('woff2'); }
+@font-face { font-family: 'Noto Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url("folio/fonts/NotoSans-Regular.woff2") format('woff2'); }
+@font-face { font-family: 'Noto Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url("folio/fonts/NotoSans-Medium.woff2") format('woff2'); }
+@font-face { font-family: 'Noto Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url("folio/fonts/NotoSans-SemiBold.woff2") format('woff2'); }
+
+:root, :host {
+  --color-primary: #1f5b47 !important;
+  --color-secondary: #174536 !important;
+
+  --font-sans: 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --au-font-heading: 'Noto Serif', Georgia, 'Times New Roman', serif;
+  --au-num-font: var(--font-sans);
+  --au-font-features: "kern", "tnum";
+  --au-title-size: 1.75rem;
+  --au-table-title-size: 1.45rem;
+  --au-title-weight: 600;
+  --au-title-tracking: -0.01em;
+  --au-btn-weight: 500;
+
+  --color-gray-50:  oklch(0.985 0.004 80);
+  --color-gray-100: oklch(0.962 0.007 80);
+  --color-gray-200: oklch(0.920 0.011 80);
+  --color-gray-300: oklch(0.865 0.015 80);
+  --color-gray-400: oklch(0.710 0.018 80);
+  --color-gray-500: oklch(0.560 0.018 80);
+  --color-gray-600: oklch(0.460 0.017 80);
+  --color-gray-700: oklch(0.375 0.015 80);
+  --color-gray-800: oklch(0.290 0.012 80);
+  --color-gray-900: oklch(0.225 0.010 80);
+  --color-gray-950: oklch(0.165 0.008 80);
+  --color-slate-50:  var(--color-gray-50);
+  --color-slate-100: var(--color-gray-100);
+  --color-slate-200: var(--color-gray-200);
+  --color-slate-300: var(--color-gray-300);
+  --color-slate-400: var(--color-gray-400);
+  --color-slate-500: var(--color-gray-500);
+  --color-slate-600: var(--color-gray-600);
+  --color-slate-700: var(--color-gray-700);
+  --color-slate-800: var(--color-gray-800);
+  --color-slate-900: var(--color-gray-900);
+  --color-slate-950: var(--color-gray-950);
+
+  --au-canvas: #f6f4ef;
+  --au-surface: #fffdf9;
+  --au-surface-sunken: #faf8f3;
+  --au-hover: #f2eee6;
+  --au-border: #e3ddd1;
+  --au-border-soft: #ece7dd;
+  --au-border-strong: #cfc7b8;
+  --au-text: #2a2620;
+  --au-text-muted: #6b6356;
+  --au-text-faint: #9c9384;
+  --au-tooltip-bg: #2a2620;
+  --au-scrim: rgb(42 38 32 / 0.40);
+  --au-scrim-soft: rgb(42 38 32 / 0.12);
+
+  --au-accent-text: var(--color-primary);
+  --au-accent-soft: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  --au-accent-soft-strong: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  --au-accent-border: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  --au-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 18%, transparent);
+
+  --au-cta-bg: var(--color-primary);
+  --au-cta-bg-hover: color-mix(in oklab, var(--color-primary) 84%, black);
+  --au-cta-text: #ffffff;
+  --au-cta-border: transparent;
+  --au-cta-shadow: none;
+  --au-cta-shadow-hover: none;
+  --au-cta-filter-hover: none;
+
+  --au-radius-sm: 4px;
+  --au-radius: 6px;
+  --au-radius-lg: 8px;
+  --au-radius-xl: 10px;
+  --au-pill-radius: 6px;
+  --au-avatar-radius: 999px;
+  --au-badge-radius: 4px;
+  --au-badge-tracking: 0.01em;
+  --au-badge-transform: none;
+  --au-shadow-xs: none;
+  --au-shadow-sm: 0 1px 0 rgb(60 50 30 / 0.04);
+  --au-shadow-md: 0 6px 18px -8px rgb(60 50 30 / 0.16);
+  --au-shadow-lg: 0 20px 40px -12px rgb(60 50 30 / 0.22), 0 0 0 1px rgb(60 50 30 / 0.05);
+  --au-shadow-cta: none;
+  --au-shadow-drawer: -24px 0 48px -24px rgb(60 50 30 / 0.28), -1px 0 0 var(--au-border);
+  --au-card-shadow: none;
+  --au-card-shadow-hover: none;
+  --au-table-shadow: none;
+  --au-lift: 0px;
+  --au-loader-bg: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%);
+
+  --au-cell-py: 0.7rem;
+  --au-cell-px: 0.9rem;
+  --au-th-bg: var(--au-surface);
+  --au-th-text: var(--au-text-muted);
+  --au-th-font: var(--font-sans);
+  --au-th-size: 0.8rem;
+  --au-th-weight: 600;
+  --au-th-tracking: 0.01em;
+  --au-th-transform: none;
+  --au-th-border: 2px solid var(--au-border-strong);
+  --au-row-stripe: transparent;
+  --au-row-hover: #faf6ee;
+
+  --au-nav-bg: var(--au-surface);
+  --au-nav-border: var(--au-border);
+  --au-nav-shadow: none;
+  --au-nav-text: var(--au-text);
+  --au-nav-text-muted: var(--au-text-muted);
+  --au-nav-text-faint: var(--au-text-faint);
+  --au-nav-hover: var(--au-hover);
+  --au-nav-link-hover: var(--au-accent-text);
+  --au-avatar-bg: color-mix(in srgb, var(--color-primary) 12%, white);
+  --au-avatar-text: var(--color-primary);
+  --au-menu-head-bg: var(--au-hover);
+  --au-menu-head-text: var(--au-text);
+
+  --au-sb-bg: #efebe3;
+  --au-sb-border: #e0d9cb;
+  --au-sb-text: #4d463b;
+  --au-sb-text-strong: #1f1b16;
+  --au-sb-text-faint: #8f8676;
+  --au-sb-hover: rgb(60 50 30 / 0.06);
+  --au-sb-scroll: rgb(60 50 30 / 0.18);
+  --au-sb-active-bg: var(--au-surface);
+  --au-sb-active-text: var(--color-primary);
+  --au-sb-active-shadow: inset 3px 0 0 var(--color-primary), 0 1px 2px rgb(60 50 30 / 0.08);
+  --au-sb-home-bg: transparent;
+  --au-sb-home-border: transparent;
+  --au-sb-home-hover: rgb(60 50 30 / 0.05);
+  --au-sb-home-icon-bg: var(--color-primary);
+  --au-sb-home-icon-text: #ffffff;
+  --au-sb-home-active-icon-bg: color-mix(in oklab, var(--color-primary) 80%, black);
+  --au-sb-rail: 2px;
+  --au-sb-group-gap: 0.75rem;
+  --au-sb-group-font: var(--au-font-heading);
+  --au-sb-group-size: 0.82rem;
+  --au-sb-group-tracking: 0;
+  --au-sb-group-transform: none;
+  --au-sb-badge-bg: #b42318;
+
+  --primary-color: var(--color-primary);
+  --primary-color-text: #ffffff;
+  --highlight-bg: var(--au-accent-soft);
+  --highlight-text-color: var(--au-accent-text);
+  --focus-ring: var(--au-ring);
+  --font-feature-settings: var(--au-font-features);
+}
+
+html.dark {
+  --au-canvas: #171512;
+  --au-surface: #1e1b17;
+  --au-surface-sunken: #1a1814;
+  --au-hover: #26221d;
+  --au-border: #332e27;
+  --au-border-soft: #29251f;
+  --au-border-strong: #453e35;
+  --au-text: #ece6da;
+  --au-text-muted: #b3a996;
+  --au-text-faint: #7f7666;
+  --au-tooltip-bg: #0f0e0c;
+
+  --au-accent-text: #8fcfb3;
+  --au-accent-soft: rgb(95 180 145 / 0.13);
+  --au-accent-soft-strong: rgb(95 180 145 / 0.22);
+  --au-accent-border: rgb(95 180 145 / 0.40);
+  --au-ring: 0 0 0 3px rgb(95 180 145 / 0.30);
+  --au-cta-bg: #2f7a5f;
+  --au-cta-bg-hover: #378c6d;
+
+  --au-shadow-md: 0 8px 20px -8px rgb(0 0 0 / 0.55);
+  --au-shadow-lg: 0 24px 48px -12px rgb(0 0 0 / 0.65);
+  --au-shadow-drawer: -24px 0 48px -20px rgb(0 0 0 / 0.65);
+
+  --au-row-hover: #231f1a;
+  --au-avatar-bg: rgb(95 180 145 / 0.16);
+  --au-avatar-text: #8fcfb3;
+
+  --au-sb-bg: #1a1815;
+  --au-sb-border: #2a2621;
+  --au-sb-text: #cfc6b5;
+  --au-sb-text-strong: #fff8ec;
+  --au-sb-text-faint: #8a8170;
+  --au-sb-hover: rgb(255 255 255 / 0.05);
+  --au-sb-scroll: rgb(255 255 255 / 0.14);
+  --au-sb-active-bg: #26221d;
+  --au-sb-active-text: #8fcfb3;
+  --au-sb-active-shadow: inset 3px 0 0 #6fbf9c;
+  --au-sb-home-icon-bg: #2f7a5f;
+  --au-sb-home-active-icon-bg: #378c6d;
+}
+
+/* ---- Folio-only structure ---------------------------------------------- */
+
+/* page titles get a hairline rule underneath, like a document heading */
+#app-main-content > h1, h1.app-main-title {
+  border-bottom: 1px solid var(--au-border);
+  padding-bottom: 0.6rem;
+}
+
+/* form labels in small caps rather than grey micro-text */
+.input-wrapper .input-label { font-variant: small-caps; letter-spacing: 0.03em; font-size: 0.85rem; }
+
+/* tabs underline in ink, titles in the text face */
+.p-tabview .p-tabview-title { font-weight: 500; }

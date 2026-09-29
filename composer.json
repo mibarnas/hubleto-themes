@@ -1,0 +1,17 @@
+{
+    "name": "mibarnas/hubleto-themes",
+    "description": "UI themes for Hubleto ERP: Aurora, Folio, Graphite and Meridian, selectable in Settings > Theme.",
+    "type": "library",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2",
+        "hubleto/erp": "^1.1",
+        "hubleto/assets": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mibarnas\\HubletoThemes\\": "src/"
+        }
+    }
+}

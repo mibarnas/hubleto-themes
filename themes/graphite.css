@@ -1,0 +1,233 @@
+/*
+ * Graphite -- a dense operations console: the platform's UI font with Noto
+ * Sans Mono for figures and headers, a charcoal top bar, a light zinc sidebar
+ * with an inverted active chip, monochrome buttons, 2-3px corners, zebra rows,
+ * and a burnt-orange signal colour kept for focus, links and state.
+ *
+ * Structure comes from shared/base.css; aurora.css documents every token.
+ */
+
+@import url("shared/base.css");
+
+@font-face { font-family: 'Noto Sans Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url("graphite/fonts/NotoSansMono-Regular.woff2") format('woff2'); }
+@font-face { font-family: 'Noto Sans Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url("graphite/fonts/NotoSansMono-Medium.woff2") format('woff2'); }
+
+:root, :host {
+  --color-primary: #c2410c !important;
+  --color-secondary: #9a3412 !important;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --au-font-mono: 'Noto Sans Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --au-font-heading: var(--font-sans);
+  --au-num-font: var(--au-font-mono);
+  --au-font-features: normal;
+  --au-title-size: 1.3rem;
+  --au-table-title-size: 1.15rem;
+  --au-title-weight: 600;
+  --au-title-tracking: -0.01em;
+  --au-btn-weight: 500;
+
+  --color-gray-50:  oklch(0.985 0 0);
+  --color-gray-100: oklch(0.967 0.001 286);
+  --color-gray-200: oklch(0.920 0.004 286);
+  --color-gray-300: oklch(0.871 0.006 286);
+  --color-gray-400: oklch(0.705 0.015 286);
+  --color-gray-500: oklch(0.552 0.016 286);
+  --color-gray-600: oklch(0.442 0.017 286);
+  --color-gray-700: oklch(0.370 0.013 286);
+  --color-gray-800: oklch(0.274 0.006 286);
+  --color-gray-900: oklch(0.210 0.006 286);
+  --color-gray-950: oklch(0.141 0.005 286);
+  --color-slate-50:  var(--color-gray-50);
+  --color-slate-100: var(--color-gray-100);
+  --color-slate-200: var(--color-gray-200);
+  --color-slate-300: var(--color-gray-300);
+  --color-slate-400: var(--color-gray-400);
+  --color-slate-500: var(--color-gray-500);
+  --color-slate-600: var(--color-gray-600);
+  --color-slate-700: var(--color-gray-700);
+  --color-slate-800: var(--color-gray-800);
+  --color-slate-900: var(--color-gray-900);
+  --color-slate-950: var(--color-gray-950);
+
+  --au-canvas: #f4f4f5;
+  --au-surface: #ffffff;
+  --au-surface-sunken: #fafafa;
+  --au-hover: #f0f0f1;
+  --au-border: #e4e4e7;
+  --au-border-soft: #efeff1;
+  --au-border-strong: #d4d4d8;
+  --au-text: #18181b;
+  --au-text-muted: #52525b;
+  --au-text-faint: #a1a1aa;
+  --au-tooltip-bg: #18181b;
+  --au-scrim: rgb(9 9 11 / 0.50);
+  --au-scrim-soft: rgb(9 9 11 / 0.15);
+
+  --au-accent-text: var(--color-primary);
+  --au-accent-soft: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  --au-accent-soft-strong: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  --au-accent-border: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --au-ring: 0 0 0 2px color-mix(in srgb, var(--color-primary) 45%, transparent);
+
+  /* primary actions stay monochrome; orange is reserved for signal */
+  --au-cta-bg: #18181b;
+  --au-cta-bg-hover: #3f3f46;
+  --au-cta-text: #fafafa;
+  --au-cta-border: transparent;
+  --au-cta-shadow: none;
+  --au-cta-shadow-hover: none;
+  --au-cta-filter-hover: none;
+
+  --au-radius-sm: 2px;
+  --au-radius: 3px;
+  --au-radius-lg: 4px;
+  --au-radius-xl: 4px;
+  --au-pill-radius: 3px;
+  --au-avatar-radius: 2px;
+  --au-badge-radius: 2px;
+  --au-badge-tracking: 0.04em;
+  --au-badge-transform: uppercase;
+  --au-shadow-xs: none;
+  --au-shadow-sm: none;
+  --au-shadow-md: 0 2px 6px rgb(0 0 0 / 0.08);
+  --au-shadow-lg: 0 12px 28px -8px rgb(0 0 0 / 0.20), 0 0 0 1px rgb(0 0 0 / 0.04);
+  --au-shadow-cta: none;
+  --au-shadow-drawer: -12px 0 24px -12px rgb(0 0 0 / 0.20), -1px 0 0 var(--au-border);
+  --au-card-shadow: none;
+  --au-card-shadow-hover: none;
+  --au-table-shadow: none;
+  --au-lift: 0px;
+  --au-loader-bg: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%);
+
+  --au-cell-py: 0.32rem;
+  --au-cell-px: 0.6rem;
+  --au-th-bg: #fafafa;
+  --au-th-text: #52525b;
+  --au-th-font: var(--au-font-mono);
+  --au-th-size: 0.68rem;
+  --au-th-weight: 500;
+  --au-th-tracking: 0.02em;
+  --au-th-transform: uppercase;
+  --au-th-border: 1px solid var(--au-border-strong);
+  --au-row-stripe: #fafafa;
+  --au-row-hover: #f1f1f3;
+
+  --au-nav-bg: #18181b;
+  --au-nav-border: #27272a;
+  --au-nav-shadow: none;
+  --au-nav-text: #fafafa;
+  --au-nav-text-muted: #a1a1aa;
+  --au-nav-text-faint: #71717a;
+  --au-nav-hover: rgb(255 255 255 / 0.08);
+  --au-nav-link-hover: #fdba74;
+  --au-avatar-bg: #3f3f46;
+  --au-avatar-text: #fafafa;
+  --au-menu-head-bg: #18181b;
+  --au-menu-head-text: #fafafa;
+
+  --au-sb-bg: #fafafa;
+  --au-sb-border: #e4e4e7;
+  --au-sb-text: #3f3f46;
+  --au-sb-text-strong: #09090b;
+  --au-sb-text-faint: #a1a1aa;
+  --au-sb-hover: #efeff1;
+  --au-sb-scroll: #d4d4d8;
+  --au-sb-active-bg: #18181b;
+  --au-sb-active-text: #fafafa;
+  --au-sb-active-shadow: inset 2px 0 0 var(--color-primary);
+  --au-sb-home-bg: #ffffff;
+  --au-sb-home-border: #e4e4e7;
+  --au-sb-home-hover: #f4f4f5;
+  --au-sb-home-icon-bg: var(--color-primary);
+  --au-sb-home-icon-text: #ffffff;
+  --au-sb-home-active-icon-bg: #18181b;
+  --au-sb-rail: 0px;
+  --au-sb-group-gap: 0.75rem;
+  --au-sb-group-font: var(--au-font-mono);
+  --au-sb-group-size: 0.66rem;
+  --au-sb-group-tracking: 0.06em;
+  --au-sb-group-transform: uppercase;
+  --au-sb-badge-bg: var(--color-primary);
+
+  --primary-color: var(--color-primary);
+  --primary-color-text: #ffffff;
+  --highlight-bg: var(--au-accent-soft);
+  --highlight-text-color: var(--au-accent-text);
+  --focus-ring: var(--au-ring);
+  --font-feature-settings: var(--au-font-features);
+}
+
+html.dark {
+  --au-canvas: #09090b;
+  --au-surface: #111113;
+  --au-surface-sunken: #0d0d0f;
+  --au-hover: #1b1b1e;
+  --au-border: #232326;
+  --au-border-soft: #1a1a1d;
+  --au-border-strong: #2f2f33;
+  --au-text: #ececee;
+  --au-text-muted: #a1a1aa;
+  --au-text-faint: #6b6b73;
+  --au-tooltip-bg: #27272a;
+
+  --au-accent-text: #fb923c;
+  --au-accent-soft: rgb(234 88 12 / 0.14);
+  --au-accent-soft-strong: rgb(234 88 12 / 0.24);
+  --au-accent-border: rgb(234 88 12 / 0.45);
+  --au-ring: 0 0 0 2px rgb(251 146 60 / 0.55);
+  --au-cta-bg: #fafafa;
+  --au-cta-bg-hover: #d4d4d8;
+  --au-cta-text: #09090b;
+
+  --au-shadow-md: 0 2px 8px rgb(0 0 0 / 0.5);
+  --au-shadow-lg: 0 16px 32px -8px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(255 255 255 / 0.04);
+  --au-shadow-drawer: -16px 0 32px -12px rgb(0 0 0 / 0.7), -1px 0 0 var(--au-border);
+
+  --au-th-bg: #0d0d0f;
+  --au-th-text: #a1a1aa;
+  --au-row-stripe: #0f0f11;
+  --au-row-hover: #1b1b1e;
+
+  --au-nav-bg: #0b0b0d;
+  --au-nav-border: #1f1f22;
+  --au-avatar-bg: #27272a;
+
+  --au-sb-bg: #0f0f11;
+  --au-sb-border: #1f1f22;
+  --au-sb-text: #c4c4c8;
+  --au-sb-text-strong: #ffffff;
+  --au-sb-text-faint: #6b6b73;
+  --au-sb-hover: #1b1b1e;
+  --au-sb-scroll: #2f2f33;
+  --au-sb-active-bg: #fafafa;
+  --au-sb-active-text: #09090b;
+  --au-sb-home-bg: #151517;
+  --au-sb-home-border: #232326;
+  --au-sb-home-hover: #1b1b1e;
+  --au-sb-home-active-icon-bg: #3f3f46;
+}
+
+/* ---- Graphite-only structure ------------------------------------------- */
+
+/* denser shell */
+div#app-main-content { padding: 1rem 1.25rem 1.5rem; }
+#app-main-content > h1, h1.app-main-title { margin-bottom: 0.875rem; }
+.hubleto.component.table .table-header { margin-bottom: 0.625rem; }
+aside#default-sidebar .sidebar-group .sidebar-group-btns .btn .text { font-size: 0.85rem; }
+
+/* small, set-width status chips (size variants keep their own scale) */
+.badge:not(.badge-large):not(.badge-extra-large) { font-size: 0.68rem; font-weight: 600; }
+
+/* section headers read as labels */
+.card-header,
+.divider > div > div:nth-child(2) > span {
+  font-family: var(--au-font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* identifiers and figures elsewhere in mono too */
+code, .key-value-table > div div:nth-child(2) { font-family: var(--au-font-mono); }

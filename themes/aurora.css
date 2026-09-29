@@ -1,0 +1,208 @@
+/*
+ * Aurora -- modern SaaS: Inter, cool violet-tinted neutrals, ink sidebar,
+ * indigo-to-violet gradient accents, soft elevation, pill shapes.
+ *
+ * All themes share their structure (shared/base.css) and differ only in the
+ * tokens below plus a few rules of their own. This file is the annotated
+ * reference for the token set -- a new theme must define every token.
+ *
+ * How themes are wired in:
+ *   - `composer install/update` runs bin/install-themes.php, which copies
+ *     themes/ to vendor/hubleto/assets/css/themes/, where Desktop.twig links
+ *     `css/themes/{uiTheme}.css`.
+ *   - Settings > Theme lists every themes/*.css through the package's Theme
+ *     controller override (src/Controllers/Theme.php).
+ */
+
+@import url("shared/base.css");
+
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url("aurora/fonts/Inter-Regular.woff2") format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url("aurora/fonts/Inter-Medium.woff2") format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url("aurora/fonts/Inter-SemiBold.woff2") format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url("aurora/fonts/Inter-Bold.woff2") format('woff2'); }
+
+:root, :host {
+  /* --- Brand -------------------------------------------------------------- */
+  --color-primary: #5b4ef0 !important;
+  --color-secondary: #4338ca !important;
+
+  /* --- Type --------------------------------------------------------------- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --au-font-heading: var(--font-sans);          /* page/table/modal/card titles */
+  --au-num-font: var(--font-sans);              /* int/float/date table columns */
+  --au-font-features: "cv11", "ss01", "ss03";
+  --au-title-size: 1.6rem;                      /* page title */
+  --au-table-title-size: 1.35rem;
+  --au-title-weight: 600;
+  --au-title-tracking: -0.02em;
+  --au-btn-weight: 500;
+
+  /* --- Neutrals: Tailwind's gray/slate scales, retinted -------------------- */
+  --color-gray-50:  oklch(0.985 0.003 275);
+  --color-gray-100: oklch(0.967 0.006 275);
+  --color-gray-200: oklch(0.925 0.010 275);
+  --color-gray-300: oklch(0.870 0.015 275);
+  --color-gray-400: oklch(0.710 0.020 275);
+  --color-gray-500: oklch(0.550 0.025 275);
+  --color-gray-600: oklch(0.450 0.030 275);
+  --color-gray-700: oklch(0.370 0.035 275);
+  --color-gray-800: oklch(0.280 0.035 275);
+  --color-gray-900: oklch(0.210 0.035 275);
+  --color-gray-950: oklch(0.155 0.030 275);
+  --color-slate-50:  var(--color-gray-50);
+  --color-slate-100: var(--color-gray-100);
+  --color-slate-200: var(--color-gray-200);
+  --color-slate-300: var(--color-gray-300);
+  --color-slate-400: var(--color-gray-400);
+  --color-slate-500: var(--color-gray-500);
+  --color-slate-600: var(--color-gray-600);
+  --color-slate-700: var(--color-gray-700);
+  --color-slate-800: var(--color-gray-800);
+  --color-slate-900: var(--color-gray-900);
+  --color-slate-950: var(--color-gray-950);
+
+  /* --- Surfaces & text ---------------------------------------------------- */
+  --au-canvas: oklch(0.975 0.005 275);          /* page background */
+  --au-surface: #ffffff;                        /* cards, tables, modals */
+  --au-surface-sunken: oklch(0.982 0.004 275);  /* footers, table headers */
+  --au-hover: oklch(0.960 0.008 275);
+  --au-border: oklch(0.920 0.010 275);
+  --au-border-soft: oklch(0.950 0.007 275);
+  --au-border-strong: oklch(0.870 0.014 275);
+  --au-text: oklch(0.230 0.035 275);
+  --au-text-muted: oklch(0.500 0.025 275);
+  --au-text-faint: oklch(0.680 0.020 275);
+  --au-tooltip-bg: oklch(0.230 0.035 275);
+  --au-scrim: rgb(15 15 35 / 0.45);             /* behind PrimeReact dialogs */
+  --au-scrim-soft: rgb(20 20 50 / 0.18);        /* behind in-parent modals */
+
+  /* --- Accent ------------------------------------------------------------- */
+  --au-accent-text: var(--color-primary);
+  --au-accent-soft: color-mix(in srgb, var(--color-primary) 9%, transparent);
+  --au-accent-soft-strong: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  --au-accent-border: color-mix(in srgb, var(--color-primary) 32%, transparent);
+  --au-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
+  --au-gradient: linear-gradient(135deg,
+    color-mix(in oklab, var(--color-primary) 85%, white) 0%,
+    var(--color-primary) 50%,
+    color-mix(in oklab, var(--color-primary) 72%, #d946ef) 100%);
+
+  /* --- Primary buttons (Add/Save/Edit/Primary) ----------------------------- */
+  --au-cta-bg: var(--au-gradient);
+  --au-cta-bg-hover: var(--au-gradient);
+  --au-cta-text: #ffffff;
+  --au-cta-border: transparent;
+  --au-cta-shadow: var(--au-shadow-cta);
+  --au-cta-shadow-hover: 0 6px 16px -6px color-mix(in srgb, var(--color-primary) 70%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.18);
+  --au-cta-filter-hover: brightness(1.07) saturate(1.05);
+
+  /* --- Shape & elevation -------------------------------------------------- */
+  --au-radius-sm: 6px;
+  --au-radius: 8px;
+  --au-radius-lg: 12px;
+  --au-radius-xl: 16px;
+  --au-pill-radius: 999px;                      /* user button in the navbar */
+  --au-avatar-radius: 999px;
+  --au-badge-radius: 999px;
+  --au-badge-tracking: 0.01em;
+  --au-badge-transform: none;
+  --au-shadow-xs: 0 1px 2px rgb(20 20 50 / 0.05);
+  --au-shadow-sm: 0 1px 2px rgb(20 20 50 / 0.04), 0 1px 3px rgb(20 20 50 / 0.06);
+  --au-shadow-md: 0 6px 16px -4px rgb(20 20 50 / 0.10), 0 2px 4px -2px rgb(20 20 50 / 0.06);
+  --au-shadow-lg: 0 24px 48px -12px rgb(20 20 50 / 0.25), 0 8px 16px -8px rgb(20 20 50 / 0.10);
+  --au-shadow-cta: 0 1px 2px rgb(20 20 50 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.18);
+  --au-shadow-drawer: -32px 0 64px -24px rgb(20 20 50 / 0.35), -1px 0 0 var(--au-border);
+  --au-card-shadow: var(--au-shadow-sm);
+  --au-card-shadow-hover: var(--au-shadow-md);
+  --au-table-shadow: var(--au-shadow-sm);
+  --au-lift: -2px;                              /* app launcher tile on hover */
+  --au-loader-bg: linear-gradient(90deg, transparent 0%, var(--color-primary) 35%, #d946ef 65%, transparent 100%);
+
+  /* --- Tables ------------------------------------------------------------- */
+  --au-cell-py: 0.55rem;
+  --au-cell-px: 0.75rem;
+  --au-th-bg: var(--au-surface-sunken);
+  --au-th-text: var(--au-text-muted);
+  --au-th-font: var(--font-sans);
+  --au-th-size: 0.72rem;
+  --au-th-weight: 600;
+  --au-th-tracking: 0.05em;
+  --au-th-transform: uppercase;
+  --au-th-border: 1px solid var(--au-border);
+  --au-row-stripe: transparent;
+  --au-row-hover: color-mix(in srgb, var(--color-primary) 4%, var(--au-surface));
+
+  /* --- Top navbar --------------------------------------------------------- */
+  --au-nav-bg: var(--au-surface);
+  --au-nav-border: var(--au-border);
+  --au-nav-shadow: 0 1px 0 rgb(20 20 50 / 0.02);
+  --au-nav-text: var(--au-text);
+  --au-nav-text-muted: var(--au-text-muted);
+  --au-nav-text-faint: var(--au-text-faint);
+  --au-nav-hover: var(--au-hover);
+  --au-nav-link-hover: var(--au-accent-text);
+  --au-avatar-bg: var(--au-gradient);
+  --au-avatar-text: #ffffff;
+  --au-menu-head-bg: var(--au-gradient);        /* header of the user menu */
+  --au-menu-head-text: #ffffff;
+
+  /* --- Sidebar ------------------------------------------------------------ */
+  --au-sb-bg: linear-gradient(180deg, #121229 0%, #17163a 100%);
+  --au-sb-border: rgb(255 255 255 / 0.08);
+  --au-sb-text: rgb(255 255 255 / 0.70);
+  --au-sb-text-strong: #ffffff;
+  --au-sb-text-faint: rgb(255 255 255 / 0.42);
+  --au-sb-hover: rgb(255 255 255 / 0.07);
+  --au-sb-scroll: rgb(255 255 255 / 0.15);
+  --au-sb-active-bg: var(--au-gradient);
+  --au-sb-active-text: #ffffff;
+  --au-sb-active-shadow: 0 6px 16px -6px color-mix(in srgb, var(--color-primary) 80%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.15);
+  --au-sb-home-bg: rgb(255 255 255 / 0.05);     /* company ("home") button */
+  --au-sb-home-border: var(--au-sb-border);
+  --au-sb-home-hover: rgb(255 255 255 / 0.09);
+  --au-sb-home-icon-bg: var(--au-gradient);
+  --au-sb-home-icon-text: #ffffff;
+  --au-sb-home-active-icon-bg: rgb(255 255 255 / 0.2);
+  --au-sb-rail: 2px;                            /* sidebar group colour rail */
+  --au-sb-group-gap: 0.625rem;
+  --au-sb-group-font: var(--font-sans);
+  --au-sb-group-size: 0.68rem;
+  --au-sb-group-tracking: 0.08em;
+  --au-sb-group-transform: uppercase;
+  --au-sb-badge-bg: #f43f5e;
+
+  /* --- PrimeReact (Lara) variables ---------------------------------------- */
+  --primary-color: var(--color-primary);
+  --primary-color-text: #ffffff;
+  --highlight-bg: var(--au-accent-soft);
+  --highlight-text-color: var(--au-accent-text);
+  --focus-ring: var(--au-ring);
+  --font-feature-settings: var(--au-font-features);
+}
+
+html.dark {
+  --au-canvas: oklch(0.150 0.022 275);
+  --au-surface: oklch(0.190 0.026 275);
+  --au-surface-sunken: oklch(0.170 0.024 275);
+  --au-hover: oklch(0.235 0.030 275);
+  --au-border: oklch(0.285 0.030 275);
+  --au-border-soft: oklch(0.240 0.028 275);
+  --au-border-strong: oklch(0.360 0.032 275);
+  --au-text: oklch(0.950 0.008 275);
+  --au-text-muted: oklch(0.760 0.018 275);
+  --au-text-faint: oklch(0.590 0.020 275);
+
+  --au-accent-text: color-mix(in oklab, var(--color-primary) 55%, white);
+  --au-accent-soft: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  --au-accent-soft-strong: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  --au-accent-border: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --au-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+  --au-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.30);
+  --au-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.30), 0 1px 3px rgb(0 0 0 / 0.25);
+  --au-shadow-md: 0 8px 20px -6px rgb(0 0 0 / 0.55);
+  --au-shadow-lg: 0 28px 56px -12px rgb(0 0 0 / 0.70);
+  --au-shadow-drawer: -32px 0 64px -16px rgb(0 0 0 / 0.75);
+
+  --au-sb-bg: linear-gradient(180deg, oklch(0.130 0.024 278) 0%, oklch(0.145 0.035 285) 100%);
+}

@@ -1,0 +1,208 @@
+/*
+ * Meridian -- corporate and institutional: Lato, blue-grey neutrals, a solid
+ * navy sidebar with an indicator bar, 4px corners, flat surfaces held by
+ * borders, title-case table headers on a grey band, rectangular status chips.
+ *
+ * Structure comes from shared/base.css; aurora.css documents every token.
+ */
+
+@import url("shared/base.css");
+
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap; src: url("meridian/fonts/Lato-Regular.woff2") format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 600; font-display: swap; src: url("meridian/fonts/Lato-Semibold.woff2") format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap; src: url("meridian/fonts/Lato-Bold.woff2") format('woff2'); }
+
+:root, :host {
+  --color-primary: #0b4f8a !important;
+  --color-secondary: #083b68 !important;
+
+  --font-sans: 'Lato', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --au-font-heading: var(--font-sans);
+  --au-num-font: var(--font-sans);
+  --au-font-features: "kern", "tnum";
+  --au-title-size: 1.5rem;
+  --au-table-title-size: 1.25rem;
+  --au-title-weight: 700;
+  --au-title-tracking: -0.005em;
+  --au-btn-weight: 600;
+
+  --color-gray-50:  oklch(0.984 0.003 250);
+  --color-gray-100: oklch(0.962 0.006 250);
+  --color-gray-200: oklch(0.918 0.011 250);
+  --color-gray-300: oklch(0.860 0.016 250);
+  --color-gray-400: oklch(0.700 0.022 250);
+  --color-gray-500: oklch(0.545 0.027 250);
+  --color-gray-600: oklch(0.445 0.030 250);
+  --color-gray-700: oklch(0.365 0.032 250);
+  --color-gray-800: oklch(0.280 0.030 250);
+  --color-gray-900: oklch(0.215 0.028 250);
+  --color-gray-950: oklch(0.160 0.024 250);
+  --color-slate-50:  var(--color-gray-50);
+  --color-slate-100: var(--color-gray-100);
+  --color-slate-200: var(--color-gray-200);
+  --color-slate-300: var(--color-gray-300);
+  --color-slate-400: var(--color-gray-400);
+  --color-slate-500: var(--color-gray-500);
+  --color-slate-600: var(--color-gray-600);
+  --color-slate-700: var(--color-gray-700);
+  --color-slate-800: var(--color-gray-800);
+  --color-slate-900: var(--color-gray-900);
+  --color-slate-950: var(--color-gray-950);
+
+  --au-canvas: #f2f4f7;
+  --au-surface: #ffffff;
+  --au-surface-sunken: #f7f8fa;
+  --au-hover: #eef2f6;
+  --au-border: #d8dee6;
+  --au-border-soft: #e7ebf0;
+  --au-border-strong: #c3ccd7;
+  --au-text: #1b2635;
+  --au-text-muted: #536074;
+  --au-text-faint: #8a96a8;
+  --au-tooltip-bg: #1b2635;
+  --au-scrim: rgb(16 24 40 / 0.45);
+  --au-scrim-soft: rgb(16 24 40 / 0.15);
+
+  --au-accent-text: var(--color-primary);
+  --au-accent-soft: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  --au-accent-soft-strong: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  --au-accent-border: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  --au-ring: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+
+  --au-cta-bg: var(--color-primary);
+  --au-cta-bg-hover: color-mix(in oklab, var(--color-primary) 84%, black);
+  --au-cta-text: #ffffff;
+  --au-cta-border: transparent;
+  --au-cta-shadow: var(--au-shadow-cta);
+  --au-cta-shadow-hover: var(--au-shadow-cta);
+  --au-cta-filter-hover: none;
+
+  --au-radius-sm: 3px;
+  --au-radius: 4px;
+  --au-radius-lg: 6px;
+  --au-radius-xl: 6px;
+  --au-pill-radius: 4px;
+  --au-avatar-radius: 3px;
+  --au-badge-radius: 3px;
+  --au-badge-tracking: 0.01em;
+  --au-badge-transform: none;
+  --au-shadow-xs: 0 1px 1px rgb(16 24 40 / 0.05);
+  --au-shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06);
+  --au-shadow-md: 0 4px 10px -2px rgb(16 24 40 / 0.10);
+  --au-shadow-lg: 0 16px 32px -8px rgb(16 24 40 / 0.22), 0 0 0 1px rgb(16 24 40 / 0.04);
+  --au-shadow-cta: 0 1px 1px rgb(16 24 40 / 0.10);
+  --au-shadow-drawer: -16px 0 32px -12px rgb(16 24 40 / 0.25), -1px 0 0 var(--au-border);
+  --au-card-shadow: var(--au-shadow-xs);
+  --au-card-shadow-hover: var(--au-shadow-sm);
+  --au-table-shadow: none;
+  --au-lift: 0px;
+  --au-loader-bg: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%);
+
+  --au-cell-py: 0.5rem;
+  --au-cell-px: 0.75rem;
+  --au-th-bg: #eef1f5;
+  --au-th-text: #34404f;
+  --au-th-font: var(--font-sans);
+  --au-th-size: 0.82rem;
+  --au-th-weight: 700;
+  --au-th-tracking: 0;
+  --au-th-transform: none;
+  --au-th-border: 1px solid var(--au-border-strong);
+  --au-row-stripe: transparent;
+  --au-row-hover: #f4f7fb;
+
+  /* a 3px brand rule along the top edge of the bar */
+  --au-nav-bg: var(--au-surface);
+  --au-nav-border: var(--au-border);
+  --au-nav-shadow: inset 0 3px 0 var(--color-primary);
+  --au-nav-text: var(--au-text);
+  --au-nav-text-muted: var(--au-text-muted);
+  --au-nav-text-faint: var(--au-text-faint);
+  --au-nav-hover: var(--au-hover);
+  --au-nav-link-hover: var(--au-accent-text);
+  --au-avatar-bg: color-mix(in srgb, var(--color-primary) 12%, white);
+  --au-avatar-text: var(--color-primary);
+  --au-menu-head-bg: #0f2236;
+  --au-menu-head-text: #ffffff;
+
+  --au-sb-bg: #0f2236;
+  --au-sb-border: rgb(255 255 255 / 0.07);
+  --au-sb-text: rgb(255 255 255 / 0.74);
+  --au-sb-text-strong: #ffffff;
+  --au-sb-text-faint: rgb(255 255 255 / 0.45);
+  --au-sb-hover: rgb(255 255 255 / 0.06);
+  --au-sb-scroll: rgb(255 255 255 / 0.18);
+  --au-sb-active-bg: rgb(255 255 255 / 0.10);
+  --au-sb-active-text: #ffffff;
+  --au-sb-active-shadow: inset 3px 0 0 #4da3ff;
+  --au-sb-home-bg: transparent;
+  --au-sb-home-border: transparent;
+  --au-sb-home-hover: rgb(255 255 255 / 0.06);
+  --au-sb-home-icon-bg: rgb(255 255 255 / 0.10);
+  --au-sb-home-icon-text: #ffffff;
+  --au-sb-home-active-icon-bg: #4da3ff;
+  --au-sb-rail: 0px;
+  --au-sb-group-gap: 0.875rem;
+  --au-sb-group-font: var(--font-sans);
+  --au-sb-group-size: 0.7rem;
+  --au-sb-group-tracking: 0.07em;
+  --au-sb-group-transform: uppercase;
+  --au-sb-badge-bg: #d92d20;
+
+  --primary-color: var(--color-primary);
+  --primary-color-text: #ffffff;
+  --highlight-bg: var(--au-accent-soft);
+  --highlight-text-color: var(--au-accent-text);
+  --focus-ring: var(--au-ring);
+  --font-feature-settings: var(--au-font-features);
+}
+
+html.dark {
+  --au-canvas: #0e1621;
+  --au-surface: #141e2b;
+  --au-surface-sunken: #111a25;
+  --au-hover: #1a2636;
+  --au-border: #243345;
+  --au-border-soft: #1c2938;
+  --au-border-strong: #33465d;
+  --au-text: #e6ebf2;
+  --au-text-muted: #a3b0c2;
+  --au-text-faint: #6f7f95;
+  --au-tooltip-bg: #0b1520;
+
+  /* navy is too dark to carry text or buttons on a dark page */
+  --au-accent-text: #7cb8f2;
+  --au-accent-soft: rgb(77 163 255 / 0.13);
+  --au-accent-soft-strong: rgb(77 163 255 / 0.22);
+  --au-accent-border: rgb(77 163 255 / 0.40);
+  --au-ring: 0 0 0 3px rgb(77 163 255 / 0.35);
+  --au-cta-bg: #1f6fbf;
+  --au-cta-bg-hover: #2a7fd4;
+
+  --au-shadow-xs: 0 1px 1px rgb(0 0 0 / 0.30);
+  --au-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --au-shadow-md: 0 6px 14px -4px rgb(0 0 0 / 0.50);
+  --au-shadow-lg: 0 20px 40px -10px rgb(0 0 0 / 0.65);
+  --au-shadow-drawer: -20px 0 40px -12px rgb(0 0 0 / 0.60);
+
+  --au-th-bg: #182433;
+  --au-th-text: #c3cddb;
+  --au-row-hover: #182433;
+
+  --au-nav-shadow: inset 0 3px 0 #1f6fbf;
+  --au-avatar-bg: rgb(77 163 255 / 0.16);
+  --au-avatar-text: #9ccbf7;
+  --au-menu-head-bg: #0a1520;
+
+  --au-sb-bg: #0a141f;
+}
+
+/* ---- Meridian-only structure ------------------------------------------- */
+
+/* company button reads as a header row, not a tile */
+aside#default-sidebar > nav > a.btn:first-child {
+  border-radius: 0;
+  border-bottom: 1px solid var(--au-sb-border);
+  margin: -0.75rem -0.5rem 0.5rem;
+  padding: 0.7rem 0.75rem;
+}
