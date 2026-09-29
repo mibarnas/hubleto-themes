@@ -11,6 +11,12 @@ Four UI themes for Hubleto ERP, selectable in **Settings > Theme** next to the b
 
 All four support dark mode. Fonts are bundled, so the themes make no external requests.
 
+| Aurora | Folio |
+|---|---|
+| [![Aurora](screenshots/aurora.png)](screenshots/aurora.png) | [![Folio](screenshots/folio.png)](screenshots/folio.png) |
+| **Graphite** | **Meridian** |
+| [![Graphite](screenshots/graphite.png)](screenshots/graphite.png) | [![Meridian](screenshots/meridian.png)](screenshots/meridian.png) |
+
 ## Requirements
 
 - Hubleto ERP 1.1 (`composer create-project hubleto/erp-project`).
